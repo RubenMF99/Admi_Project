@@ -20,6 +20,7 @@ const OlvidePassword = () => {
      try{
        const url = `${import.meta.env.VITE_RUTA}/user/recoverpassword`;
        const {data} = await axios.post(url,{email});
+       console.log(data);
        setError({
         msg: data.msg,
         error:false
