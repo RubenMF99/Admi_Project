@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {Link} from 'react-router-dom';
-import axios from 'axios'
+import axiosClient from "../config/axiosClient";
 import Alerta from '../components/Alerta';
 const OlvidePassword = () => {
 
@@ -18,8 +18,8 @@ const OlvidePassword = () => {
         return;
      }
      try{
-       const url = `${import.meta.env.VITE_RUTA}/user/recoverpassword`;
-       const {data} = await axios.post(url,{email});
+       const url = `/user/recoverpassword`;
+       const {data} = await axiosClient.post(url,{email});
        console.log(data);
        setError({
         msg: data.msg,

@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link, useParams  } from "react-router-dom";
-import axios from "axios";
+import axiosClient from "../config/axiosClient";
 import Alerta from "../components/Alerta";
 
 const NuevoPassword = () => {
   const [errorForm, setError] = useState({});
-  const [tokenValidate, setTokenValidate] = useState(false);
+  const [tokenValidate, setTokenValidate] = useState(true);
   const [password,setPassword] = useState('');
   const params = useParams();
   const { token } = params;
@@ -13,11 +13,11 @@ const NuevoPassword = () => {
   useEffect(() => {
     const validateToken = async () => {
       try {
-        const url = `${import.meta.env.VITE_RUTA}/user/validation/${token}`;
-        await axios.get(url);
-        setTokenValidate(true);
+        const url = `/user/validation/${token}`;
+        await axiosClient.get(url);
       } catch (error) {
         console.log(error.response);
+        setTokenValidate(false);
       }
     };
     validateToken();
@@ -40,8 +40,8 @@ const NuevoPassword = () => {
 
  const peticion = async()=>{
   try{
-    const url = `${import.meta.env.VITE_RUTA}/user/validation/${token}`;
-    const {data} = await axios.post(url,{password});
+    const url = `/user/validation/${token}`;
+    const {data} = await axiosClient.post(url,{password});
     setError({
      msg: data.msg,
      error:false

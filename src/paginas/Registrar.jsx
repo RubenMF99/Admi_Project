@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import {Link} from 'react-router-dom';
 import Alerta from '../components/Alerta';
-import axios from 'axios'
+import axiosClient from "../config/axiosClient";
 
 const Registrar = () => {
     //state
@@ -57,7 +57,7 @@ const Registrar = () => {
     }
     const registrarUser = async ()=> {
         try{
-            const {data} = await axios.post(`${import.meta.env.VITE_RUTA}/user`,toAdduser);
+            const {data} = await axiosClient.post(`/user`,toAdduser);
             setError({
               msg: data.msg,
               error:false
