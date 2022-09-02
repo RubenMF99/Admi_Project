@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {Link} from 'react-router-dom';
-import axiosClient from "../config/axiosClient";
-import Alerta from '../components/Alerta';
+import axiosClient from "../../config/axiosClient";
+import Alerta from '../../components/Alerta';
 const OlvidePassword = () => {
 
   const [email,setEmail] = useState('');

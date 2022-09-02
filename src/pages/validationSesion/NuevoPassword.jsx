@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useParams  } from "react-router-dom";
-import axiosClient from "../config/axiosClient";
-import Alerta from "../components/Alerta";
+import axiosClient from "../../config/axiosClient";
+import Alerta from "../../components/Alerta";
 
 const NuevoPassword = () => {
   const [errorForm, setError] = useState({});

@@ -1,7 +1,8 @@
 import {Link,useNavigate} from 'react-router-dom';
 import { useState } from 'react';
-import axiosClient from '../config/axiosClient';
-import Alerta from '../components/Alerta';
+import axiosClient from '../../config/axiosClient';
+import Alerta from '../../components/Alerta';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
 
@@ -9,6 +10,9 @@ const Login = () => {
     email:'',
     password:''
   });
+  
+  const {setAuthUser} = useAuth();
+   
   const [errorForm,setError] = useState({});
   const {email,password} =  user;
 
@@ -39,6 +43,7 @@ const Login = () => {
         try {
            const {data} = await axiosClient.post('/user/login',user);
            localStorage.setItem('token',data.token)
+           setAuthUser(data);
             setError({})
         } catch (error) {
           setError({

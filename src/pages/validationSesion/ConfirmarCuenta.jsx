@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import axiosClient from "../config/axiosClient";
-import Alerta from "../components/Alerta";
+import axiosClient from "../../config/axiosClient";
+import Alerta from "../../components/Alerta";
 
 const ConfirmarCuenta = () => {
   const params = useParams();
